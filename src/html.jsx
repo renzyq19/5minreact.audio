@@ -2,18 +2,27 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import DocumentTitle from 'react-document-title'
 
-const BUILD_TIME = new Date().getTime()
+let inlinedStyles = ''
+if (process.env.NODE_ENV === 'production') {
+  try {
+    inlinedStyles = require('!raw-loader!../public/styles.css')
+  } catch (e) {
+    console.log(e)
+  }
+}
+
 class HTML extends React.Component {
   render () {
-    const { body } = this.props
     const title = DocumentTitle.rewind()
-    const font = (<link
-      href="https://fonts.googleapis.com/css?family=Roboto:400,400italic,500,700&subset=latin"
-      rel="stylesheet"
-      type="text/css"/>)
+    const font = (
+      <link
+        href="https://fonts.googleapis.com/css?family=Roboto:400,400italic,500,700&subset=latin"
+        rel="stylesheet"
+        type="text/css"
+      />)
     let css
     if (process.env.NODE_ENV === 'production') {
-        css = <style dangerouslySetInnerHTML={{ __html: require('!raw!./public/styles.css') }}/>
+      css = <style dangerouslySetInnerHTML={{ __html: inlinedStyles }} />
     }
 
     return (
@@ -28,6 +37,7 @@ class HTML extends React.Component {
           <link rel="manifest" href="/manifest.json" />
           <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#f7df1e" />
           <meta name="theme-color" content="#f7df1e" />
+          {this.props.headComponents}
           <title>
             { title }
           </title>
@@ -36,7 +46,7 @@ class HTML extends React.Component {
         </head>
         <body>
           <div id="___gatsby" dangerouslySetInnerHTML={{ __html: this.props.body }} />
-          <script src={`/bundle.js?t=${BUILD_TIME}`} />
+          {this.props.postBodyComponents}
         </body>
       </html>
     )

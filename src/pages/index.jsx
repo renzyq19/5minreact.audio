@@ -29,7 +29,7 @@ class SiteIndex extends React.Component {
                       <time dateTime={ moment(datePublished).format('MMMM D, YYYY') }>
                         { moment(datePublished).format('DD MMMM YYYY') }
                       </time>
-                      <p dangerouslySetInnerHTML={ {    __html: body } } />
+                      <p dangerouslySetInnerHTML={{ __html: body}} />
                     </div>
                 )
             }

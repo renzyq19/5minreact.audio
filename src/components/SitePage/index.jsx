@@ -1,7 +1,5 @@
 import React from "react";
 import {RouteHandler} from "react-router";
-import {prefixLink} from "gatsby-helpers";
-import {config} from "config";
 import SiteSidebar from "../SiteSidebar";
 import "./style.css";
 

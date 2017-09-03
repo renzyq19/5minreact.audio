@@ -1,8 +1,6 @@
 import React from 'react'
 import moment from 'moment'
 import { RouteHandler, Link } from 'react-router'
-import { prefixLink } from 'gatsby-helpers'
-import { config } from 'config'
 import './style.css'
 
 const DisqusThread = require('react-disqus-thread')

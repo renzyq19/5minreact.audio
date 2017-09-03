@@ -6,7 +6,12 @@
   "dependencies": {
     "gatsby": "^1.9.17",
     "gatsby-link": "^1.6.15",
-    "gatsby-plugin-react-helmet": "^1.0.5"
+    "gatsby-plugin-react-helmet": "^1.0.5",
+    "prop-types": "^15.5.10",
+    "react": "^15.6.1",
+    "react-disqus-thread": "^0.4.0",
+    "react-document-title": "^2.0.3",
+    "safe-access": "^0.1.0"
   },
   "keywords": [
     "gatsby"

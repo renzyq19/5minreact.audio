@@ -1,7 +1,5 @@
 import React from 'react'
 import { RouteHandler, Link } from 'react-router'
-import { prefixLink } from 'gatsby-helpers'
-import { config } from 'config'
 import SiteLinks from '../SiteLinks'
 import './style.css'
 import profilePic from '../../pages/5minreactpodcast_1400.png'

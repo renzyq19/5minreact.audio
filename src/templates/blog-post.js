@@ -10,13 +10,21 @@ class BlogPostTemplate extends React.Component {
     const post = this.props.data.markdownRemark
     const meta = this.props.data.site.siteMetadata
 
-    let layout, template
+    const layout = post.frontmatter.layout
 
-    //template = <SitePage {...this.props} />
+    let template
+
+    if (layout === 'page') {
+      template = <SitePage {...this.props} />
+    } else {
+      template = <SitePost post={post} />
+    }
+
 
     return (
       <DocumentTitle title={`${post.frontmatter.title} - ${meta.title}`}>
         <div>
+          { template }
         </div>
       </DocumentTitle>
     )
@@ -39,7 +47,6 @@ query BlogPostBySlug($slug: String!){
   site {
     siteMetadata {
       title
-      descr
     }
   }
 }

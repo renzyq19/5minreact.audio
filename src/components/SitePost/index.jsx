@@ -1,18 +1,17 @@
 import React from 'react'
 import moment from 'moment'
-import { RouteHandler, Link } from 'react-router'
+import Link from 'gatsby-link'
 import './style.css'
 
 const DisqusThread = require('react-disqus-thread')
 
 class SitePost extends React.Component {
     render() {
-        const {route} = this.props
-        const post = route.page.data
+        const post = this.props.post
+        const frontmatter = post.frontmatter
         const home = (
         <div>
-          <Link className='gohome' to={ prefixLink('/') }> All episodes
-          </Link>
+          <Link className='gohome' to='/'> All episodes</Link>
         </div>
         )
 
@@ -21,15 +20,15 @@ class SitePost extends React.Component {
               { home }
               <div className='blog-single'>
                 <div className='text'>
-                  <h1>{ post.title }</h1>
+                  <h1>{ frontmatter.title }</h1>
                    <div className='date-published'>
-                    { moment(post.date).format('DD MMMM YYYY') }
+                    { moment(frontmatter.date).format('DD MMMM YYYY') }
                   </div>
-                  <div dangerouslySetInnerHTML={ {    __html: post.body} } />
+                  <div dangerouslySetInnerHTML={{ __html: post.html }} />
                   <DisqusThread
                     shortname="5minreact-audio"
                     title={post.title}
-                    url={`http://5minreact.audio${this.props.location.pathname}`}
+                    url={`http://5minreact.audio${frontmatter.pathname}`}
                   />
                 </div>
               </div>
@@ -40,7 +39,6 @@ class SitePost extends React.Component {
 
 SitePost.propTypes = {
     post: React.PropTypes.object.isRequired,
-    pages: React.PropTypes.array,
 }
 
 export default SitePost

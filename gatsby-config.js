@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: '5 minutes of React podcast',
-    descr: 'Podcast about React hot topics and JavaScript ecosystem.',
+    description: 'Podcast about React hot topics and JavaScript ecosystem.',
     twitterUrl: 'https://twitter.com/5minreact_audio',
     emailUrl: 'mailto:podcast@5minreact.audio',
     rssUrl: 'http://feeds.soundcloud.com/users/soundcloud:users:304879382/sounds.rss',
@@ -10,6 +10,7 @@ module.exports = {
     soundcloudUrl: 'https://soundcloud.com/5minreact_audio',
     youTubeUrl: 'https://www.youtube.com/channel/UC43OeCrRbp6hSEnNZWIHOGg/videos?flow=list&live_view=500&view=0&sort=dd',
   },
+
 
   plugins: [
     {

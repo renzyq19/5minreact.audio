@@ -12,7 +12,7 @@ const Template = ({ children }) =>
 
 
 Template.propTypes = {
-  children: PropTypes.function,
+  children: PropTypes.func,
 }
 
 export default Template

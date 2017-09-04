@@ -68,6 +68,14 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         title
+        description
+        itunesUrl
+        androidUrl
+        soundcloudUrl
+        rssUrl
+        twitterUrl
+        youTubeUrl
+        emailUrl
       }
     }
    allMarkdownRemark(

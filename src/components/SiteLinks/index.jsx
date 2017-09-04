@@ -3,7 +3,7 @@ import './style.css'
 
 class SiteLinks extends React.Component {
   render() {
-    console.log(this.props.data)
+    console.log(this.props)
     const meta = this.props.data.site.siteMetadata
 
     return (

@@ -15,7 +15,7 @@ class BlogPostTemplate extends React.Component {
     let template
 
     if (layout === 'page') {
-      template = <SitePage {...this.props} />
+      template = <SitePage />
     } else {
       template = <SitePost post={post} />
     }

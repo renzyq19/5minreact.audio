@@ -10,7 +10,7 @@ class SitePage extends React.Component {
 
         return (
             <div>
-              <SiteSidebar {...this.props}/>
+              <SiteSidebar />
               <div className='content'>
                 <div className='main'>
                   <div className='main-inner'>

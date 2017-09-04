@@ -7,9 +7,10 @@ import profilePic from '../../pages/5minreactpodcast_1400.png'
 
 class SiteSidebar extends React.Component {
     render() {
-        const {location, children} = this.props
-        const isHome = location.pathname === '/'
-        const siteDescr = this.props.data.site.siteMetadata.descr
+        const isHome = this.props.isHome 
+      console.log(this.props.data)
+        const siteData = {title: 'Wrong', descr :'wrong'} || this.props.data.site.siteMetadata
+
 
         let header = (
         <header>
@@ -17,11 +18,11 @@ class SiteSidebar extends React.Component {
           <img src={ profilePic } width='256' height='256' />
           </Link>
           { isHome ? (
-            <h1><Link style={ {    textDecoration: 'none',    borderBottom: 'none',    color: 'inherit'} } to={ '/' }> { config.siteTitle } </Link></h1>
+            <h1><Link style={ {    textDecoration: 'none',    borderBottom: 'none',    color: 'inherit'} } to={ '/' }> { siteData.title } </Link></h1>
             ) :
-            <h2><Link style={ {    textDecoration: 'none',    borderBottom: 'none',    color: 'inherit'} } to={ '/' }> { config.siteTitle } </Link></h2> }
+            <h2><Link style={ {    textDecoration: 'none',    borderBottom: 'none',    color: 'inherit'} } to={ '/' }> { siteData.title } </Link></h2> }
           <p>
-            { siteDescr }
+            { siteData.descr }
           </p>
         </header>
         )
@@ -36,7 +37,7 @@ class SiteSidebar extends React.Component {
                 </div>
                 <div className='blog-options'>
                   <footer>
-                    <SiteLinks {...this.props}/>
+                    <SiteLinks />
                   </footer>
                 </div>
               </div>
@@ -51,3 +52,14 @@ SiteSidebar.propTypes = {
 }
 
 export default SiteSidebar
+
+export const query = graphql`
+  query SideBarQuery {
+    site {
+      siteMetadata {
+        title
+        descr
+      }
+    }
+  }
+`

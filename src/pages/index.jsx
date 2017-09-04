@@ -1,27 +1,31 @@
 import React from 'react'
 import Link from 'gatsby-link'
-import sortBy from 'lodash/sortBy'
 import moment from 'moment'
 import DocumentTitle from 'react-document-title'
 import access from 'safe-access'
+
 import SitePost from '../components/SitePost'
 import SiteSidebar from '../components/SiteSidebar'
 
 class SiteIndex extends React.Component {
     render() {
         const pageLinks = []
-        // Sort pages.
-        const sortedPages = sortBy(this.props.route.pages, (page) => access(page, 'data.date')
-        ).reverse()
+        const sortedPages = this.props.data.allMarkdownRemark.edges
+        console.log(this.props.data);
+        const siteData = {title: 'Wrong'}
+
         sortedPages.forEach((page) => {
             if (access(page, 'file.ext') === 'md' && access(page, 'data.layout') === 'post') {
                 const title = access(page, 'data.title') || page.path
                 // const description = access(page, 'data.description')
                 const body = access(page, 'data.body').split('<hr>')[0]
                 const datePublished = access(page, 'data.date')
-                const category = access(page, 'data.category')
-
-                // <span className='blog-category'>{ category }</span>
+              
+                // 
+                // Wasn't sure what this was doing, and it was already commented out, so I've left it here
+                //
+                //    const category = access(page, 'data.category')
+                //    <span className='blog-category'>{ category }</span>
 
                 pageLinks.push(
                     <div className='blog-post' key={title}>
@@ -36,9 +40,9 @@ class SiteIndex extends React.Component {
         })
 
         return (
-            <DocumentTitle title={ siteTitle }>
+            <DocumentTitle title={ siteData.title }>
               <div>
-                <SiteSidebar {...this.props}/>
+                <SiteSidebar isHome={true}/>
                 <div className='content'>
                   <div className='main'>
                     <div className='main-inner'>
@@ -57,3 +61,30 @@ SiteIndex.propTypes = {
 }
 
 export default SiteIndex
+
+
+export const pageQuery = graphql`
+  query IndexQuery {
+    site {
+      siteMetadata {
+        title
+      }
+    }
+   allMarkdownRemark(
+      sort: {fields: [frontmatter___date], order: DESC}
+    )
+    {
+      edges {
+        node {
+          fields { slug }
+          frontmatter {
+            title
+            date
+          }
+          html
+        }
+      }
+    }
+  }
+ `
+

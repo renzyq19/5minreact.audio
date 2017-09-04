@@ -6,7 +6,7 @@ import "./style.css";
 class SitePage extends React.Component {
     render() {
         const {route} = this.props
-        const post = route.page.data
+        const post = this.props.data.markdownRemark
 
         return (
             <div>

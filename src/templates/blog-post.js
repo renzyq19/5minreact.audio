@@ -12,12 +12,11 @@ class BlogPostTemplate extends React.Component {
 
     let layout, template
 
-    template = <SitePage {...this.props} />
+    //template = <SitePage {...this.props} />
 
     return (
       <DocumentTitle title={`${post.frontmatter.title} - ${meta.title}`}>
         <div>
-          { template }
         </div>
       </DocumentTitle>
     )
@@ -40,6 +39,7 @@ query BlogPostBySlug($slug: String!){
   site {
     siteMetadata {
       title
+      descr
     }
   }
 }

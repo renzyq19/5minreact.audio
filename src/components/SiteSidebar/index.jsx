@@ -1,51 +1,47 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import Link from 'gatsby-link'
-import { RouteHandler } from 'react-router'
 import SiteLinks from '../SiteLinks'
 import './style.css'
 import profilePic from '../../pages/5minreactpodcast_1400.png'
 
-class SiteSidebar extends React.Component {
-    render() {
-        const isHome = this.props.isHome 
-        const siteData = this.props.siteData || this.props.data.site.siteMetadata
-        let header = (
-        <header>
-          <Link style={ {    textDecoration: 'none',    borderBottom: 'none',    outline: 'none'} } to={ '/' }>
-          <img src={ profilePic } width='256' height='256' />
-          </Link>
-          { isHome ? (
-            <h1><Link style={ {    textDecoration: 'none',    borderBottom: 'none',    color: 'inherit'} } to={ '/' }> { siteData.title } </Link></h1>
-            ) :
-            <h2><Link style={ {    textDecoration: 'none',    borderBottom: 'none',    color: 'inherit'} } to={ '/' }> { siteData.title } </Link></h2> }
-          <p>
-            { siteData.description }
-          </p>
-        </header>
-        )
+const SiteSidebar = ({ siteData, data, isHome }) => {
+  siteData = data ? data.site.Metadata : siteData
+  const homelink = <Link style={{ textDecoration: 'none', borderBottom: 'none', color: 'inherit' }} to="/" > { siteData.title } </Link>
+  const header = (
+    <header>
+      <Link style={{ textDecoration: 'none', borderBottom: 'none', outline: 'none' }} to="/">
+        <img src={profilePic} width="256" height="256" alt="profile" />
+      </Link>
+      { isHome ? <h1>{homelink}</h1> : <h2>{homelink}</h2> }
+      <p>
+        { siteData.description }
+      </p>
+    </header>
+  )
 
-        return (
-            <div className='sidebar'>
-              <div className='sidebar-inner'>
-                <div className='blog-details'>
-                  <header>
-                    { header }
-                  </header>
-                </div>
-                <div className='blog-options'>
-                  <footer>
-                    <SiteLinks siteData={siteData}/>
-                  </footer>
-                </div>
-              </div>
-            </div>
-            );
-    }
+  return (
+    <div className="sidebar">
+      <div className="sidebar-inner">
+        <div className="blog-details">
+          <header>
+            { header }
+          </header>
+        </div>
+        <div className="blog-options">
+          <footer>
+            <SiteLinks siteData={siteData} />
+          </footer>
+        </div>
+      </div>
+    </div>
+  )
 }
 
 SiteSidebar.propTypes = {
-    children: React.PropTypes.any,
-    location: React.PropTypes.object,
+  isHome: PropTypes.bool,
+  siteData: PropTypes.object,
+  data: PropTypes.object,
 }
 
 export default SiteSidebar

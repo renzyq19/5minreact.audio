@@ -5,30 +5,28 @@ import DocumentTitle from 'react-document-title'
 import SitePost from '../components/SitePost'
 import SitePage from '../components/SitePage'
 
-class BlogPostTemplate extends React.Component {
-  render () {
-    const post = this.props.data.markdownRemark
-    const meta = this.props.data.site.siteMetadata
+const BlogPostTemplate = ({ data }) => {
+  const post = data.markdownRemark
+  const meta = data.site.siteMetadata
 
-    const layout = post.frontmatter.layout
+  const layout = post.frontmatter.layout
 
-    let template
+  let template
 
-    if (layout === 'page') {
-      template = <SitePage />
-    } else {
-      template = <SitePost post={post} />
-    }
-
-
-    return (
-      <DocumentTitle title={`${post.frontmatter.title} - ${meta.title}`}>
-        <div>
-          { template }
-        </div>
-      </DocumentTitle>
-    )
+  if (layout === 'page') {
+    template = <SitePage />
+  } else {
+    template = <SitePost post={post} />
   }
+
+
+  return (
+    <DocumentTitle title={`${post.frontmatter.title} - ${meta.title}`}>
+      <div>
+        { template }
+      </div>
+    </DocumentTitle>
+  )
 }
 
 export default BlogPostTemplate

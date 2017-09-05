@@ -3,6 +3,7 @@ import './style.css'
 
 class SiteLinks extends React.Component {
   render() {
+    console.log(this.props.data)
     const meta = this.props.siteData
 
     return (
@@ -29,17 +30,18 @@ class SiteLinks extends React.Component {
 
 export default SiteLinks
 
-export const PageQuery = graphql`
-query SiteLinksQuery {
-  site {
-    siteMetadata {
-      itunesUrl
-      androidUrl
-      soundcloudUrl
-      rssUrl
-      twitterUrl
-      youTubeUrl
-      emailUrl
+export const query = graphql`
+  query SiteLinksQuery {
+    site {
+      siteMetadata {
+        itunesUrl
+        androidUrl
+        soundcloudUrl
+        rssUrl
+        twitterUrl
+        youTubeUrl
+        emailUrl
+      }
     }
   }
-}`
+`

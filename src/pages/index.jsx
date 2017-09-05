@@ -8,13 +8,12 @@ import SiteSidebar from '../components/SiteSidebar'
 
 class SiteIndex extends React.Component {
     render() {
-        const pageLinks = []
+      console.log(this.props.data)
         const sortedPages = this.props.data.allMarkdownRemark.edges
         const siteData = this.props.data.site.siteMetadata
 
         const pageLink =  ({ node }) => {
                 const title = node.frontmatter.title
-                // const description = access(page, 'data.description')
                 const body = node.html.split('<hr>')[0]
                 const datePublished = node.frontmatter.date
               
@@ -74,6 +73,7 @@ export const pageQuery = graphql`
       }
     }
    allMarkdownRemark(
+      limit: 10
       sort: {fields: [frontmatter___date], order: DESC}
     )
     {

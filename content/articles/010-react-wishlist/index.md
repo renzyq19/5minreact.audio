@@ -5,7 +5,7 @@ layout: post
 path: "/010-react-wishlist/"
 ---
 
-<iframe width="100%" height="166" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/328216510&amp;color=ff5500&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false"></iframe>
+<iframe width="6" height="1" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/328216510&amp;color=ff5500&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false"></iframe>
 
 Dan Abramov asked his Twitter audience: “What would you want the React team to focus on in the next 6 months? Reply with a new thing, or Iike existing replies”. This request inspired a massive thread of a few hundred tweets...
 

@@ -5,7 +5,7 @@ layout: post
 path: "/011-react15.6-webpack3-babel-notes-mobx-state-tree-preact-egghead/"
 ---
 
-<iframe width="100%" height="166" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/329453032&amp;color=ff5500&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false"></iframe>
+<iframe width="6" height="1" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/329453032&amp;color=ff5500&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false"></iframe>
 
 - https://facebook.github.io/react/blog/2017/06/13/react-v15.6.0.html
 - https://twitter.com/dan_abramov/status/875149571688734721

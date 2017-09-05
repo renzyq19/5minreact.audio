@@ -5,7 +5,7 @@ layout: post
 path: "/005-idiomatic-redux/"
 ---
 
-<iframe width="100%" height="166" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/322367043&amp;color=ff5500&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false"></iframe>
+<iframe width="6" height="1" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/322367043&amp;color=ff5500&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false"></iframe>
 
 Mark Erikson, one of Redux contributors, has published an article in his Idiomatic Redux series: "The Tao of Redux, Part 1 - Implementation and Intent." Thoughts on what Redux requires, how Redux is intended to be used, and what is possible with Redux.
 

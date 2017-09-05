@@ -6,7 +6,8 @@ import './style.css'
 import profilePic from '../../pages/5minreactpodcast_1400.png'
 
 const SiteSidebar = ({ siteData, data, isHome }) => {
-  siteData = data ? data.site.Metadata : siteData
+  console.log(data, 'sidebar')
+  siteData = data ? data.site.siteMetadata : siteData
   const homelink = <Link style={{ textDecoration: 'none', borderBottom: 'none', color: 'inherit' }} to="/" > { siteData.title } </Link>
   const header = (
     <header>

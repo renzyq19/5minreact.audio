@@ -24,7 +24,6 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
   const { createPage } = boundActionCreators
 
   return new Promise((resolve, reject) => {
-    const pages = []
     const blogPost = path.resolve('src/templates/blog-post.js')
     // Query for all markdown nodes and above slug
     resolve(
@@ -62,8 +61,8 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
   })
 }
 
-exports.modifyWebpackConfig = function (config) {
-  /*config.merge({
+exports.modifyWebpackConfig = ({ config }) => {
+  config.merge({
     postcss: [
       lost(),
       rucksack(),
@@ -77,8 +76,6 @@ exports.modifyWebpackConfig = function (config) {
     test: /\.(svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
     loader: 'file-loader',
   })
-  */
-  //TODO
 
   return config
 }

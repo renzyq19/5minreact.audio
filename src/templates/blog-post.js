@@ -6,19 +6,15 @@ import SitePost from '../components/SitePost'
 import SitePage from '../components/SitePage'
 
 const BlogPostTemplate = ({ data }) => {
+  console.log(data, 'blogposttemplate')
   const post = data.markdownRemark
   const meta = data.site.siteMetadata
 
   const layout = post.frontmatter.layout
 
-  let template
-
-  if (layout === 'page') {
-    template = <SitePage />
-  } else {
-    template = <SitePost post={post} />
-  }
-
+  const template = layout === 'page' ?
+    <SitePage /> :
+    <SitePost post={post} />
 
   return (
     <DocumentTitle title={`${post.frontmatter.title} - ${meta.title}`}>

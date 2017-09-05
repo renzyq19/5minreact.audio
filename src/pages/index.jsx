@@ -2,7 +2,6 @@ import React from 'react'
 import Link from 'gatsby-link'
 import moment from 'moment'
 import DocumentTitle from 'react-document-title'
-import access from 'safe-access'
 
 import SitePost from '../components/SitePost'
 import SiteSidebar from '../components/SiteSidebar'
@@ -11,15 +10,13 @@ class SiteIndex extends React.Component {
     render() {
         const pageLinks = []
         const sortedPages = this.props.data.allMarkdownRemark.edges
-        console.log(this.props.data);
         const siteData = this.props.data.site.siteMetadata
 
-        sortedPages.forEach((page) => {
-            if (access(page, 'file.ext') === 'md' && access(page, 'data.layout') === 'post') {
-                const title = access(page, 'data.title') || page.path
+        const pageLink =  ({ node }) => {
+                const title = node.frontmatter.title
                 // const description = access(page, 'data.description')
-                const body = access(page, 'data.body').split('<hr>')[0]
-                const datePublished = access(page, 'data.date')
+                const body = node.html.split('<hr>')[0]
+                const datePublished = node.frontmatter.date
               
                 // 
                 // Wasn't sure what this was doing, and it was already commented out, so I've left it here
@@ -27,17 +24,15 @@ class SiteIndex extends React.Component {
                 //    const category = access(page, 'data.category')
                 //    <span className='blog-category'>{ category }</span>
 
-                pageLinks.push(
+                return (
                     <div className='blog-post' key={title}>
-                      <h2><Link style={ {    borderBottom: 'none',} } to={ prefixLink(page.path) } > { title } </Link></h2>
+                      <h2><Link style={ {    borderBottom: 'none',} } to={ node.fields.slug } > { title } </Link></h2>
                       <time dateTime={ moment(datePublished).format('MMMM D, YYYY') }>
                         { moment(datePublished).format('DD MMMM YYYY') }
                       </time>
                       <p dangerouslySetInnerHTML={{ __html: body}} />
-                    </div>
-                )
-            }
-        })
+                    </div> )
+        }
 
         return (
             <DocumentTitle title={ siteData.title }>
@@ -46,7 +41,7 @@ class SiteIndex extends React.Component {
                 <div className='content'>
                   <div className='main'>
                     <div className='main-inner'>
-                      { pageLinks }
+                      { sortedPages.map(pageLink) }
                     </div>
                   </div>
                 </div>

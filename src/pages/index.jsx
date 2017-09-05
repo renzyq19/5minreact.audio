@@ -12,7 +12,7 @@ class SiteIndex extends React.Component {
         const pageLinks = []
         const sortedPages = this.props.data.allMarkdownRemark.edges
         console.log(this.props.data);
-        const siteData = {title: 'Wrong'}
+        const siteData = this.props.data.site.siteMetadata
 
         sortedPages.forEach((page) => {
             if (access(page, 'file.ext') === 'md' && access(page, 'data.layout') === 'post') {
@@ -42,7 +42,7 @@ class SiteIndex extends React.Component {
         return (
             <DocumentTitle title={ siteData.title }>
               <div>
-                <SiteSidebar isHome={true}/>
+                <SiteSidebar isHome={true} siteData={siteData}/>
                 <div className='content'>
                   <div className='main'>
                     <div className='main-inner'>

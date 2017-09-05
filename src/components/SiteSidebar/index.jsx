@@ -8,10 +8,7 @@ import profilePic from '../../pages/5minreactpodcast_1400.png'
 class SiteSidebar extends React.Component {
     render() {
         const isHome = this.props.isHome 
-      console.log(this.props.data)
-        const siteData = {title: 'Wrong', descr :'wrong'} || this.props.data.site.siteMetadata
-
-
+        const siteData = this.props.siteData || this.props.data.site.siteMetadata
         let header = (
         <header>
           <Link style={ {    textDecoration: 'none',    borderBottom: 'none',    outline: 'none'} } to={ '/' }>
@@ -22,7 +19,7 @@ class SiteSidebar extends React.Component {
             ) :
             <h2><Link style={ {    textDecoration: 'none',    borderBottom: 'none',    color: 'inherit'} } to={ '/' }> { siteData.title } </Link></h2> }
           <p>
-            { siteData.descr }
+            { siteData.description }
           </p>
         </header>
         )
@@ -37,7 +34,7 @@ class SiteSidebar extends React.Component {
                 </div>
                 <div className='blog-options'>
                   <footer>
-                    <SiteLinks />
+                    <SiteLinks siteData={siteData}/>
                   </footer>
                 </div>
               </div>
@@ -53,7 +50,7 @@ SiteSidebar.propTypes = {
 
 export default SiteSidebar
 
-export const query = graphql`
+export const pageQuery = graphql`
   query SideBarQuery {
     site {
       siteMetadata {

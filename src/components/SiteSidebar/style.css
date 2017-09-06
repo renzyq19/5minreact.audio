@@ -1,5 +1,6 @@
 .sidebar {
-	lost-column: 1/3;
+  position: fixed;
+	lost-column: 1/4;
 }
 .sidebar .sidebar-inner {
 	position: relative;
@@ -55,6 +56,7 @@
 }
 @media (max-width:500px) {
 	.sidebar {
+    position: relative;
 		lost-column: 1;
 	}
 	.sidebar .sidebar-inner {

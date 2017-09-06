@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import SiteSidebar from '../SiteSidebar'
 import './style.css'
 
@@ -25,7 +26,7 @@ const SitePage = ({ data }) => {
 }
 
 SitePage.propTypes = {
-    data: React.PropTypes.object,
+    data: PropTypes.object,
 }
 
 export default SitePage

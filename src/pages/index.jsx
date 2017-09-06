@@ -5,10 +5,23 @@ import DocumentTitle from 'react-document-title'
 
 import SitePost from '../components/SitePost'
 import SiteSidebar from '../components/SiteSidebar'
+import './index.css'
+
+
 
 class SiteIndex extends React.Component {
+  constructor(props){
+    super(props)
+    let linkstoshow = 4
+
+    this.state = {
+      linkstoshow
+    }
+  }
     render() {
       console.log(this.props.data)
+      console.log(this.state.linkstoshow)
+      console.log(window.linkstoshow)
         const sortedPages = this.props.data.allMarkdownRemark.edges
         const siteData = this.props.data.site.siteMetadata
 
@@ -40,7 +53,12 @@ class SiteIndex extends React.Component {
                 <div className='content'>
                   <div className='main'>
                     <div className='main-inner'>
-                      { sortedPages.map(pageLink) }
+                      { sortedPages.slice(0,this.state.linkstoshow).map(pageLink) }
+                      { this.state.linkstoshow < sortedPages.length ? (
+                        <div className="loadmore" onClick={() => this.setState(prev => ({linkstoshow: prev.linkstoshow + 4}))} >
+                          Load More
+                        </div>
+                      ) : <div />}
                     </div>
                   </div>
                 </div>
@@ -70,10 +88,10 @@ export const pageQuery = graphql`
         twitterUrl
         youTubeUrl
         emailUrl
+
       }
     }
    allMarkdownRemark(
-      limit: 10
       sort: {fields: [frontmatter___date], order: DESC}
     )
     {

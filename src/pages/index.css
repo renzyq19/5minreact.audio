@@ -1,0 +1,20 @@
+.loadmore {
+	font-size: 16px;
+	text-align: center;
+	padding: 8px 16px;
+	color: #999;
+	background: #f4f4f4;
+	font-weight: 400;
+	border-radius: 3px;
+  cursor: pointer;
+}
+.loadmore:focus {
+	color: #444;
+	background: #f4f4f4;
+	border: 0;
+}
+.loadmore:hover {
+	color: #444;
+	background: #f4f4f4;
+	border: 0;
+}

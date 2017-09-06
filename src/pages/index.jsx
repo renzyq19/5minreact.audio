@@ -8,11 +8,12 @@ import SiteSidebar from '../components/SiteSidebar'
 import './index.css'
 
 
+const linksAtATime = 2
 
 class SiteIndex extends React.Component {
   constructor(props){
     super(props)
-    let linkstoshow = 4
+    let linkstoshow = linksAtATime
 
     this.state = {
       linkstoshow
@@ -21,7 +22,6 @@ class SiteIndex extends React.Component {
     render() {
       console.log(this.props.data)
       console.log(this.state.linkstoshow)
-      console.log(window.linkstoshow)
         const sortedPages = this.props.data.allMarkdownRemark.edges
         const siteData = this.props.data.site.siteMetadata
 
@@ -55,7 +55,7 @@ class SiteIndex extends React.Component {
                     <div className='main-inner'>
                       { sortedPages.slice(0,this.state.linkstoshow).map(pageLink) }
                       { this.state.linkstoshow < sortedPages.length ? (
-                        <div className="loadmore" onClick={() => this.setState(prev => ({linkstoshow: prev.linkstoshow + 4}))} >
+                        <div className="loadmore" onClick={() => this.setState(prev => ({linkstoshow: prev.linkstoshow + linksAtATime}))} >
                           Load More
                         </div>
                       ) : <div />}
